@@ -1,0 +1,79 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+digraph G {
+    graph [rankdir=TB, clusterrank="local"];
+    subgraph cluster_G {
+
+        graph [style="filled,rounded",fillcolor="#80808018", label=""];
+        polls__finder [label="polls.finder", style="filled", fillcolor="#ffffffb2", fontcolor="#000000", group="0"];
+        polls__models [label="polls.models", style="filled", fillcolor="#ffffffb2", fontcolor="#000000", group="1"];
+        polls__views [label="polls.views", style="filled", fillcolor="#ffffffb2", fontcolor="#000000", group="2"];
+        subgraph cluster_polls__finder {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="polls.finder"];
+            polls__finder__Finder [label="Finder", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_polls__finder__Finder {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="polls.finder.Finder"];
+            polls__finder__Finder__find [label="find", style="filled", fillcolor="#ff6565b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_polls__models {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="polls.models"];
+            polls__models__Account [label="Account", style="filled", fillcolor="#ccff99b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_polls__models {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="polls.models"];
+            polls__models__Person [label="Person", style="filled", fillcolor="#ccff99b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_polls__models__Account {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="polls.models.Account"];
+            polls__models__Account____str__ [label="__str__", style="filled", fillcolor="#b2ff65b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_polls__models__Person {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="polls.models.Person"];
+            polls__models__Person____str__ [label="__str__", style="filled", fillcolor="#b2ff65b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_polls__models__Person {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="polls.models.Person"];
+            polls__models__Person__was_joined_recently [label="was_joined_recently", style="filled", fillcolor="#b2ff65b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_polls__views {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="polls.views"];
+            polls__views__index [label="index", style="filled", fillcolor="#99feffb2", fontcolor="#000000", group="2"];
+        }
+        subgraph cluster_polls__views {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="polls.views"];
+            polls__views__list [label="list", style="filled", fillcolor="#99feffb2", fontcolor="#000000", group="2"];
+        }
+        subgraph cluster_polls__views {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="polls.views"];
+            polls__views__transfer [label="transfer", style="filled", fillcolor="#99feffb2", fontcolor="#000000", group="2"];
+        }
+    }
+        polls__views -> polls__models [style="solid", color="#000000"];
+        polls__views__transfer -> polls__finder__Finder__find [style="solid", color="#000000"];
+        polls__views__transfer -> polls__finder__Finder [style="solid", color="#000000"];
+        polls__models__Account -> polls__models__Person [style="solid", color="#000000"];
+        polls__finder -> polls__models [style="solid", color="#000000"];
+    }

@@ -5,7 +5,7 @@
 import logging
 import ast
 import symtable
-
+from .sqler import txn_analyze
 from .node import Node, Flavor
 from .anutils import tail, get_module_name, format_alias, \
                      get_ast_node_name, sanitize_exprs, \
@@ -32,6 +32,9 @@ from .anutils import tail, get_module_name, format_alias, \
 # https://docs.python.org/2/library/compiler.html#module-compiler.ast
 # https://docs.python.org/3/library/ast.html#abstract-grammar
 #
+def my_print (x):
+    print (x,"\n"*150)
+
 class CallGraphVisitor(ast.NodeVisitor):
     """A visitor that can be walked over a Python AST, and will derive
     information about the objects in the AST and how they use each other.
@@ -43,7 +46,6 @@ class CallGraphVisitor(ast.NodeVisitor):
 
     def __init__(self, filenames, logger=None):
         self.logger = logger or logging.getLogger(__name__)
-
         # full module names for all given files
         self.module_names = {}
         self.module_to_filename = {}  # inverse mapping for recording which file each AST node came from
@@ -53,13 +55,12 @@ class CallGraphVisitor(ast.NodeVisitor):
             self.module_names[short_name] = mod_name
             self.module_to_filename[mod_name] = filename
         self.filenames = filenames
-
         # data gathered from analysis
         self.defines_edges = {}
         self.uses_edges = {}
         self.nodes = {}   # Node name: list of Node objects (in possibly different namespaces)
         self.scopes = {}  # fully qualified name of namespace: Scope object
-
+        
         self.class_base_ast_nodes = {}  # pass 1: class Node: list of AST nodes
         self.class_base_nodes     = {}  # pass 2: class Node: list of Node objects (local bases, no recursion)
         self.mro                  = {}  # pass 2: class Node: list of Node objects in Python's MRO order
@@ -222,7 +223,9 @@ class CallGraphVisitor(ast.NodeVisitor):
         self.name_stack.pop()
         self.class_stack.pop()
 
-    def visit_FunctionDef(self, node):
+    def visit_FunctionDef(
+        self, node):
+        txn_analyze()
         self.logger.debug("FunctionDef %s" % (node.name))
 
         # To begin with:
@@ -407,7 +410,6 @@ class CallGraphVisitor(ast.NodeVisitor):
     def visit_Attribute(self, node):
         objname = get_ast_node_name(node.value)
         self.logger.debug("Attribute %s of %s in context %s" % (node.attr, objname, type(node.ctx)))
-
         # TODO: self.last_value is a hack. Handle names in store context (LHS)
         # in analyze_binding(), so that visit_Attribute() only needs to handle
         # the load context (i.e. detect uses of the name).

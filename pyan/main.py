@@ -9,6 +9,10 @@
     for rendering by e.g. GraphViz or yEd.
 """
 
+def my_print (x):
+    print (x,"\n"*150)
+
+
 import logging
 from glob import glob
 from optparse import OptionParser  # TODO: migrate to argparse
@@ -108,7 +112,7 @@ def main():
 
     v = CallGraphVisitor(filenames, logger)
     graph = VisualGraph.from_visitor(v, options=graph_options, logger=logger)
-
+    # This is where the output is being generated ↑ 
     if options.dot:
         writer = DotWriter(
                 graph,

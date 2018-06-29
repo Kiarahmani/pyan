@@ -1,0 +1,50 @@
+dot - graphviz version 2.40.1 (20161225.0304)
+libdir = "/usr/local/Cellar/graphviz/2.40.1/lib/graphviz"
+Activated plugin library: libgvplugin_core.6.dylib
+Using render: svg:core
+Using device: svg:svg:core
+Activated plugin library: libgvplugin_dot_layout.6.dylib
+Using layout: dot:dot_layout
+The plugin configuration file:
+	/usr/local/Cellar/graphviz/2.40.1/lib/graphviz/config6
+		was successfully loaded.
+    render	:  dot dot_json fig gd json json0 map mp pic pov ps quartz svg tk vml vrml xdot xdot_json
+    layout	:  circo dot fdp neato nop nop1 nop2 osage patchwork sfdp twopi
+    textlayout	:  textlayout
+    device	:  bmp canon cgimage cmap cmapx cmapx_np dot dot_json eps exr fig gd gd2 gif gv icns ico imap imap_np ismap jp2 jpe jpeg jpg json json0 mp pct pdf pic pict plain plain-ext png pov ps ps2 psd sgi svg svgz tga tif tiff tk vml vmlz vrml wbmp xdot xdot1.2 xdot1.4 xdot_json
+    loadimage	:  (lib) bmp eps gd gd2 gif jpe jpeg jpg pdf png ps svg xbm
+pack info:
+  mode   undefined
+  size   0
+  flags  0
+  margin 8
+pack info:
+  mode   node
+  size   0
+  flags  0
+fontname: unable to resolve "Times-Roman"
+network simplex:  1 nodes 0 edges maxiter=2147483647 balance=1
+network simplex: 1 nodes 0 edges 0 iter 0.00 sec
+network simplex:  1 nodes 0 edges maxiter=2147483647 balance=1
+network simplex: 1 nodes 0 edges 0 iter 0.00 sec
+network simplex:  1 nodes 0 edges maxiter=2147483647 balance=1
+network simplex: 1 nodes 0 edges 0 iter 0.00 sec
+network simplex:  1 nodes 0 edges maxiter=2147483647 balance=0
+network simplex: 1 nodes 0 edges 0 iter 0.00 sec
+network simplex:  1 nodes 0 edges maxiter=2147483647 balance=0
+network simplex: 1 nodes 0 edges 0 iter 0.00 sec
+network simplex:  1 nodes 0 edges maxiter=2147483647 balance=0
+network simplex: 1 nodes 0 edges 0 iter 0.00 sec
+Maxrank = 0, minrank = 0
+mincross: pass 0 iter 0 trying 0 cur_cross 0 best_cross 0
+merge2: graph G, rank 0 has only 1 < 4 nodes
+mincross: pass 2 iter 0 trying 0 cur_cross 0 best_cross 0
+mincross: pass 2 iter 0 trying 0 cur_cross 0 best_cross 0
+mincross: pass 2 iter 0 trying 0 cur_cross 0 best_cross 0
+mincross G: 0 crossings, 0.00 secs.
+network simplex:  10 nodes 14 edges maxiter=2147483647 balance=2
+network simplex: 10 nodes 14 edges 1 iter 0.00 sec
+routesplines: 0 edges, 0 boxes 0.00 sec
+Using render: svg:core
+Using device: svg:svg:core
+gvRenderJobs G: 0.00 secs.
